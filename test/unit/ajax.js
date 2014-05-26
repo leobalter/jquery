@@ -1688,7 +1688,7 @@ QUnit.module( "ajax", {
 	});
 
 	QUnit.asyncTest( "#11402 - jQuery.domManip() - script in comments are properly evaluated", 2, function() {
-		jQuery("#qunit-fixture").load( "data/cleanScript.html", start );
+		jQuery("#qunit-fixture").load( "data/cleanScript.html", QUnit.start );
 	});
 
 //----------- jQuery.get()
@@ -1764,7 +1764,7 @@ QUnit.module( "ajax", {
 
 	QUnit.asyncTest( "jQuery.getScript( String, Function ) - no callback", 1, function() {
 		Globals.register("testBar");
-		jQuery.getScript( url("data/testbar.php") ).done( start );
+		jQuery.getScript( url("data/testbar.php") ).done( QUnit.start );
 	});
 
 	QUnit.asyncTest( "#8082 - jQuery.getScript( String, Function ) - source as responseText", 2, function() {
@@ -1784,12 +1784,12 @@ QUnit.module( "ajax", {
 				assert.strictEqual( this.type, "GET", "no data means GET request" );
 			}
 		});
-		jQuery("#first").load( "data/name.html", start );
+		jQuery("#first").load( "data/name.html", QUnit.start );
 	});
 
 	QUnit.asyncTest( "jQuery.fn.load() - 404 error callbacks", 6, function() {
 		addGlobalEvents("ajaxStart ajaxStop ajaxSend ajaxComplete ajaxError")();
-		jQuery( document ).ajaxStop( start );
+		jQuery( document ).ajaxStop( QUnit.start );
 		jQuery("<div/>").load( "data/404.html", function() {
 			assert.ok( true, "complete" );
 		});
@@ -1802,7 +1802,7 @@ QUnit.module( "ajax", {
 				assert.strictEqual( this.type, "GET", "no data means GET request" );
 			}
 		});
-		jQuery("#first").load( "data/name.html", null, start );
+		jQuery("#first").load( "data/name.html", null, QUnit.start );
 	});
 
 	// check if load can be called with url and undefined data
@@ -1812,7 +1812,7 @@ QUnit.module( "ajax", {
 				assert.strictEqual( this.type, "GET", "no data means GET request" );
 			}
 		});
-		jQuery("#first").load( "data/name.html", undefined, start );
+		jQuery("#first").load( "data/name.html", undefined, QUnit.start );
 	});
 
 	// check if load can be called with only url
@@ -1936,7 +1936,7 @@ QUnit.module( "ajax", {
 					});
 				});
 			})
-		).always( start );
+		).always( QUnit.start );
 	});
 
 	QUnit.asyncTest( "#2046 - jQuery.fn.load( String, Function ) with ajaxSetup on dataType json", 1, function() {
