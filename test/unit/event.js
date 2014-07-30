@@ -2424,11 +2424,10 @@ QUnit.test( "focusin using non-element targets", function( assert ) {
 
 });
 
-testIframeWithCallback( "focusin from an iframe", "event/focusinCrossFrame.html", function( frameDoc ) {
+testIframeWithCallback( "focusin from an iframe", "event/focusinCrossFrame.html", function( assert, frameDoc ) {
 	expect(1);
 
-	var input = jQuery( frameDoc ).find( "#frame-input" ),
-		assert = QUnit.assert;
+	var input = jQuery( frameDoc ).find( "#frame-input" );
 
 	if ( input.length ) {
 		// Create a focusin handler on the parent; shouldn't affect the iframe's fate
@@ -2458,26 +2457,26 @@ testIframeWithCallback( "focusin from an iframe", "event/focusinCrossFrame.html"
 	}
 });
 
-testIframeWithCallback( "jQuery.ready promise", "event/promiseReady.html", function( isOk ) {
+testIframeWithCallback( "jQuery.ready promise", "event/promiseReady.html", function( assert, isOk ) {
 	expect(1);
-	QUnit.assert.ok( isOk, "$.when( $.ready ) works" );
+	assert.ok( isOk, "$.when( $.ready ) works" );
 });
 
-testIframeWithCallback( "Focusing iframe element", "event/focusElem.html", function( isOk ) {
+testIframeWithCallback( "Focusing iframe element", "event/focusElem.html", function( assert, isOk ) {
 	expect(1);
-	QUnit.assert.ok( isOk, "Focused an element in an iframe" );
+	assert.ok( isOk, "Focused an element in an iframe" );
 });
 
-testIframeWithCallback( "triggerHandler(onbeforeunload)", "event/triggerunload.html", function( isOk ) {
+testIframeWithCallback( "triggerHandler(onbeforeunload)", "event/triggerunload.html", function( assert, isOk ) {
 	expect( 1 );
-	QUnit.assert.ok( isOk, "Triggered onbeforeunload without an error" );
+	assert.ok( isOk, "Triggered onbeforeunload without an error" );
 });
 
 // need PHP here to make the incepted IFRAME hang
 if ( hasPHP ) {
-	testIframeWithCallback( "jQuery.ready synchronous load with long loading subresources", "event/syncReady.html", function( isOk ) {
+	testIframeWithCallback( "jQuery.ready synchronous load with long loading subresources", "event/syncReady.html", function( assert, isOk ) {
 		expect(1);
-		QUnit.assert.ok( isOk, "jQuery loaded synchronously fires ready when the DOM can truly be interacted with" );
+		assert.ok( isOk, "jQuery loaded synchronously fires ready when the DOM can truly be interacted with" );
 	});
 }
 

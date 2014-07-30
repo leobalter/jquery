@@ -18,15 +18,15 @@ function getComputedSupport( support ) {
 }
 
 if ( jQuery.css ) {
-	testIframeWithCallback( "body background is not lost if set prior to loading jQuery (#9239)", "support/bodyBackground.html", function( color, support ) {
+	testIframeWithCallback( "body background is not lost if set prior to loading jQuery (#9239)", "support/bodyBackground.html", function( assert, color, support ) {
 		expect( 2 );
 		var okValue = {
 			"#000000": true,
 			"rgb(0, 0, 0)": true
 		};
-		QUnit.assert.ok( okValue[ color ], "color was not reset (" + color + ")" );
+		assert.ok( okValue[ color ], "color was not reset (" + color + ")" );
 
-		QUnit.assert.deepEqual( jQuery.extend( {}, support ), computedSupport, "Same support properties" );
+		assert.deepEqual( jQuery.extend( {}, support ), computedSupport, "Same support properties" );
 	});
 }
 
@@ -34,14 +34,14 @@ if ( jQuery.css ) {
 // i.e. no old WebKit or old Firefox
 testIframeWithCallback( "Check CSP (https://developer.mozilla.org/en-US/docs/Security/CSP) restrictions",
 	"support/csp.php",
-	function( support ) {
+	function( assert, support ) {
 		expect( 2 );
-		QUnit.assert.deepEqual( jQuery.extend( {}, support ), computedSupport, "No violations of CSP polices" );
+		assert.deepEqual( jQuery.extend( {}, support ), computedSupport, "No violations of CSP polices" );
 
 		QUnit.stop();
 
 		supportjQuery.get( "data/support/csp.log" ).done(function( data ) {
-			QUnit.assert.equal( data, "", "No log request should be sent" );
+			assert.equal( data, "", "No log request should be sent" );
 			supportjQuery.get( "data/support/csp-clean.php" ).done( QUnit.start );
 		});
 	}

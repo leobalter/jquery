@@ -233,11 +233,15 @@ this.testIframe = function( fileName, name, fn ) {
 };
 
 this.testIframeWithCallback = function( title, fileName, func ) {
-	QUnit.asyncTest( title, 1, function() {
+	QUnit.asyncTest( title, function( assert ) {
 		var iframe;
+		expect( 1 );
 
 		window.iframeCallback = function() {
-			var args = arguments;
+			var args = Array.prototype.slice.call( arguments );
+
+			// Pass the test assert with the current arguments
+			args.unshift( assert );
 
 			setTimeout(function() {
 				this.iframeCallback = undefined;

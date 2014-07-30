@@ -2253,10 +2253,10 @@ QUnit.test( "manipulate mixed jQuery and text (#12384, #12346)", function( asser
 	assert.equal( div.find("*").length, 3, "added 2 paragraphs after inner div" );
 });
 
-testIframeWithCallback( "buildFragment works even if document[0] is iframe's window object in IE9/10 (#12266)", "manipulation/iframe-denied.html", function( test ) {
+testIframeWithCallback( "buildFragment works even if document[0] is iframe's window object in IE9/10 (#12266)", "manipulation/iframe-denied.html", function( assert, test ) {
 	expect( 1 );
 
-	QUnit.assert.ok( test.status, test.description );
+	assert.ok( test.status, test.description );
 });
 
 QUnit.test( "script evaluation (#11795)", function( assert ) {

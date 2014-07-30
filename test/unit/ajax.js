@@ -38,7 +38,7 @@ QUnit.module( "ajax", {
 
 //----------- jQuery.ajax()
 
-	testIframeWithCallback( "XMLHttpRequest - Attempt to block tests because of dangling XHR requests (IE)", "ajax/unreleasedXHR.html", function() {
+	testIframeWithCallback( "XMLHttpRequest - Attempt to block tests because of dangling XHR requests (IE)", "ajax/unreleasedXHR.html", function( assert ) {
 		expect( 1 );
 		assert.ok( true, "done" );
 	});
@@ -1555,7 +1555,7 @@ QUnit.module( "ajax", {
 		}
 	} );
 
-	testIframeWithCallback( "#14379 - jQuery.ajax() on unload", "ajax/onunload.html", function( status ) {
+	testIframeWithCallback( "#14379 - jQuery.ajax() on unload", "ajax/onunload.html", function( assert, status ) {
 		expect( 1 );
 		assert.strictEqual( status, "success", "Request completed" );
 	});
