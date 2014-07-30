@@ -804,7 +804,7 @@ testIframeWithCallback( "css('width') should work correctly before document read
 	"css/cssWidthBeforeDocReady.html",
 	function( assert, cssWidthBeforeDocReady ) {
 		expect( 1 );
-		assert.strictEqual( cssWidthBeforeDocReady, "100px", "elem.css('width') works correctly before document ready" );
+		QUnit.assert.strictEqual( cssWidthBeforeDocReady, "100px", "elem.css('width') works correctly before document ready" );
 	}
 );
 
