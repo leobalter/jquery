@@ -171,15 +171,21 @@ QUnit.test("innerWidth()", function( assert ) {
 	QUnit.expectJqData( $div[0], "olddisplay" );
 });
 
+QUnit.test( "innerHeight() on document", function( assert ) {
+	var docHeight = jQuery( document ).height();
+
+	expect( 1 );
+
+	assert.equal( jQuery( document ).innerHeight(), docHeight, "Test on document" );
+});
+
 QUnit.test("innerHeight()", function( assert ) {
-	expect(6);
+	expect( 5 );
 
 	var $div, div,
-		winHeight = jQuery( window ).height(),
-		docHeight = jQuery( document ).height();
+		winHeight = jQuery( window ).height();
 
 	assert.equal(jQuery(window).innerHeight(), winHeight, "Test on window");
-	assert.equal(jQuery(document).innerHeight(), docHeight, "Test on document");
 
 	$div = jQuery("#nothiddendiv");
 	// set styles
@@ -354,18 +360,30 @@ QUnit.test("box-sizing:border-box child of a hidden elem (or unconnected node) h
 	$divNormal.remove();
 });
 
+QUnit.test( "outerHeight() on document #1", function( assert ) {
+	var docHeight = jQuery( document ).height();
+
+	expect( 1 );
+
+	assert.equal( jQuery( document ).outerHeight(), docHeight, "Test on document without margin option" );
+});
+
+QUnit.test( "outerHeight() on document #2", function( assert ) {
+	var docHeight = jQuery( document ).height();
+
+	expect( 1 );
+
+	assert.equal( jQuery( document ).outerHeight( true ), docHeight, "Test on document with margin option" );
+});
+
 QUnit.test("outerHeight()", function( assert ) {
-	expect(11);
+	expect( 9 );
 
-	var $div, div,
-	winHeight = jQuery( window ).height(),
-		docHeight = jQuery( document ).height();
-
+	var $div, div;
+		winHeight = jQuery( window ).height();
 
 	assert.equal( jQuery( window ).outerHeight(), winHeight, "Test on window without margin option" );
 	assert.equal( jQuery( window ).outerHeight( true ), winHeight, "Test on window with margin option" );
-	assert.equal( jQuery( document ).outerHeight(), docHeight, "Test on document without margin option" );
-	assert.equal( jQuery( document ).outerHeight( true ), docHeight, "Test on document with margin option" );
 
 	$div = jQuery("#nothiddendiv");
 	$div.css("height", 30);
