@@ -163,6 +163,8 @@ QUnit.testDone(function() {
 	// ...even if the jQuery under test has a broken .empty()
 	supportjQuery( "#qunit-fixture" ).empty();
 
+	QUnit.reset();
+
 	// Reset internal jQuery state
 	jQuery.event.global = {};
 	if ( ajaxSettings ) {
